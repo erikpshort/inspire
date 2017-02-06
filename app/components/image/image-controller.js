@@ -1,5 +1,24 @@
-(function(){
+(function (){
 	
-	//Your ImageService is a global constructor function what can you do here if you new it up?
-	
+	var is = new ImageService();
+
+
+		new Vue({
+			el: '#image',
+			data:{
+			},
+			mounted: function(){
+				is.getImage(this.setImage)
+			},
+			methods: {
+				setImage:  function(image){
+				var 	imageUrl = image.url
+			  console.log(imageUrl)
+			  document.getElementById("body").style.background += "url("+imageUrl+") no-repeat center center fixed"
+			//   document.getElementById("body").style.background-size = "url("+imageUrl+") no-repeat";
+				}
+			}
+		})		
 }())
+
+

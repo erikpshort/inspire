@@ -1,29 +1,40 @@
-<html>
+<html class="html">
 
 <head>
 	<meta charset="UTF-8">
 	<title>Inspire</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body id="body">
-	<div id="weather">
-		{{weather}}
+<body id="body" class="hello">
+	<div id="image">
+	</div>
+	<div id="weather" class="sticky">
+		<p>{{city}}</p>
+		<h1 @click='celsius()'>{{displayWeather.temp}}</h1>
 	</div>
 
-	<div id="quote">
-
-	</div>
 
 	<div id="todo">
+		<form @submit.prevent="addTodo(todo)">
+			<input type="text" placeholder="What to do?" v-model="todo">
+			<button type="submit">BUILD GRID</button>
+		</form>
+		<p>Total Todos = {{count}}</p>
+		<div v-for="(todo, i) in todos" class="col-sm-12 sticky black">{{todo}}
+			<input type="checkbox" :class="{on: todo.on}" @click="removeTodo(todo, i)">
+		</div>
 
 	</div>
 
+	<footer id="quote" class="quotey" :title="message">
+		{{quote}}
+	</footer>
 
 
-
-		<!--JS Libraries-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+	<!--JS Libraries-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 	<!--Initialize App-->
@@ -38,7 +49,6 @@
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
-
 </body>
 
 </html>
